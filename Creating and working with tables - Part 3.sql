@@ -91,3 +91,70 @@ select * from tblGender
 
 
 -- PART 6 - Check constraint
+-- check constraint is used to limit the range of the values, that can be entered for a coumn
+-- syntax
+-- alter table tablename add constraint constraintname check boolean_expression
+
+
+-- to drop the check constraint
+-- alter table tablename drop constraint ck_tblperson_age
+Alter Table tblPerson
+Drop Constraint CK_tblPerson_Age
+
+Alter Table tblPerson
+Add Constraint CK_tblPerson_Age Check (AGE > 0 AND AGE < 150)
+
+select * from tblPerson
+select * from tblGender
+
+-- to add the new column to exist table
+Alter table tblPerson add Age INT;
+insert into tblPerson(ID, Name, Email,GenderId,Address,Age) Values (4,'rigch', 'rr@r.com',1, 'Bellary', -23)
+-- check constraint to restrict the age should be not minus and more then reach age 
+-- using the 2 ways graphical and query
+-- delete row from specific table values
+Delete from tblPerson where ID = 4
+
+insert into tblPerson(ID, Name, Email,GenderId,Address,Age) Values (6,'rigch', 'rr@r.com',1, 'Bellary', NULL)
+
+--Part 7 - Identity Column
+
+-- what is identity column
+-- creating an identity column
+-- supply explict values for identity columns using the identity_insert
+-- reset identity values using the DBCC checkident command
+select * from tblPerson1
+
+-- to turn the identity explicitylitily
+
+set identity_insert tblPerson1 ON
+
+set identity_insert tblPerson1 OFF
+
+insert into tblPerson1 (PersonId,Name) values(1,'Jane')
+insert into tblPerson1 values('Pampa')
+--Msg 545, Level 16, State 1, Line 133
+--Explicit value must be specified for identity column in table 'tblPerson1' either when IDENTITY_INSERT is set to ON or when a replication user is inserting into a NOT FOR REPLICATION identity column.
+delete from tblPerson1
+-- after deleting the entire rows value id value will increment happening
+
+delete from tblPerson1 where PersonId = 1
+
+insert into tblPerson(ID, Name, Email,GenderId,Address,Age) Values (11,'rigch', 'rr@r.com',1, 'Bellary', NULL)
+insert into tblPerson(ID, Name, Email,GenderId,Address,Age) Values (12,'rigch', 'rr@r.com',1, 'Bellary', NULL)
+
+-- in the above 2 query creating same id for the same name then its become to confuse , uniquely identity by id two 'rigch'
+-- those identity column sql server generate
+
+-- 
+create table tblperson2
+( PersonId int identity(1,1) Primary Key,
+Name nvarchar(20)
+)
+
+select * from tblperson2
+
+insert into tblperson2 values('pampapathi')
+
+
+
