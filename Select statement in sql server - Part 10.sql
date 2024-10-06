@@ -7,3 +7,5 @@
 	-> joining multiple conditions using AND and OR Operators
 	-> sorting rows using order by
 	-> selecting top n or top n percentage of rows
+*/
+select * from tblPerson

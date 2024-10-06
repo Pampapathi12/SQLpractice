@@ -138,6 +138,8 @@ insert into tblPerson1 values('Pampa')
 delete from tblPerson1
 -- after deleting the entire rows value id value will increment happening
 
+DBCC checkident(tblPerson1,reseed,0)
+
 delete from tblPerson1 where PersonId = 1
 
 insert into tblPerson(ID, Name, Email,GenderId,Address,Age) Values (11,'rigch', 'rr@r.com',1, 'Bellary', NULL)
@@ -157,4 +159,5 @@ select * from tblperson2
 insert into tblperson2 values('pampapathi')
 
 
+--How to get the last generated identity column value in SQL Server - Part 8
 

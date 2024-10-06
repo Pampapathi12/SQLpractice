@@ -40,5 +40,10 @@ DELETE FROM CTE WHERE RowNum > 1;
 delete from tblPerson
 --
 Insert into tblPerson values (1,'ABC','a@a.com', 1, 'agasanur',20)
+Insert into tblPerson values (2,'ABC1','abc@a.com', 1, 'agasanur',20)
 select * from tblPerson
+
+-- drop the constraint
+alter table tblPerson
+Drop constraint UQ_tblPerson_Email
 
